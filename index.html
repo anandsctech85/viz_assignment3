@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@6.1.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.0.1"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Multiview Sales Dashboard (Anand - 2024EEZ8389)",
+    "anchor": "middle",
+    "fontSize": 24,
+    "font": "Helvetica",
+    "color": "#333",
+    "subtitle": "Insights from Sales Data",
+    "subtitleFontSize": 14,
+    "subtitleColor": "#666"
+  },
+  "columns": 3,
+  "concat": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/nehavinayak25/vizdata/main/HW_III.csv",
+        "format": {"type": "csv"}
+      },
+      "transform": [
+        {"calculate": "toNumber(trim(datum['Units']))", "as": "UnitsNum"},
+        {
+          "calculate": "toNumber(trim(datum['Unit Cost']))",
+          "as": "UnitCostNum"
+        },
+        {
+          "calculate": "datum.UnitsNum * datum.UnitCostNum",
+          "as": "ComputedTotal"
+        },
+        {
+          "aggregate": [
+            {"op": "sum", "field": "ComputedTotal", "as": "TotalSum"}
+          ],
+          "groupby": ["Rep"]
+        }
+      ],
+      "mark": {"type": "arc", "innerRadius": 60},
+      "encoding": {
+        "theta": {"field": "TotalSum", "type": "quantitative"},
+        "color": {"field": "Rep", "type": "nominal"},
+        "tooltip": [
+          {"field": "Rep", "type": "nominal"},
+          {"field": "TotalSum", "type": "quantitative", "title": "Total Sales"}
+        ]
+      },
+      "view": {"stroke": null},
+      "title": "Donut Chart: Total Sales by Rep"
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/nehavinayak25/vizdata/main/HW_III.csv",
+        "format": {"type": "csv"}
+      },
+      "transform": [
+        {"calculate": "toNumber(trim(datum['Units']))", "as": "UnitsNum"},
+        {"calculate": "toNumber(trim(datum['Unit Cost']))", "as": "UnitCostNum"}
+      ],
+      "mark": "point",
+      "encoding": {
+        "x": {"field": "UnitsNum", "type": "quantitative", "title": "Units"},
+        "y": {
+          "field": "UnitCostNum",
+          "type": "quantitative",
+          "title": "Unit Cost"
+        },
+        "color": {
+          "condition": {
+            "selection": "brush",
+            "field": "Item",
+            "type": "nominal"
+          },
+          "value": "lightgray"
+        },
+        "tooltip": [
+          {"field": "Item", "type": "nominal"},
+          {"field": "Rep", "type": "nominal"},
+          {"field": "UnitsNum", "type": "quantitative"},
+          {"field": "UnitCostNum", "type": "quantitative"}
+        ]
+      },
+      "selection": {"brush": {"type": "interval"}},
+      "title": "Scatter: Units vs Unit Cost"
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/nehavinayak25/vizdata/main/HW_III.csv",
+        "format": {"type": "csv"}
+      },
+      "transform": [
+        {"calculate": "toDate(datum['OrderDate'])", "as": "Date"},
+        {"calculate": "toNumber(trim(datum['Units']))", "as": "UnitsNum"},
+        {
+          "calculate": "toNumber(trim(datum['Unit Cost']))",
+          "as": "UnitCostNum"
+        },
+        {"calculate": "datum.UnitsNum * datum.UnitCostNum", "as": "Total"}
+      ],
+      "mark": "area",
+      "encoding": {
+        "x": {"field": "Date", "type": "temporal", "title": "Date"},
+        "y": {
+          "field": "Total",
+          "type": "quantitative",
+          "title": "Total",
+          "stack": "center"
+        },
+        "color": {"field": "Item", "type": "nominal"},
+        "tooltip": [
+          {"field": "Item", "type": "nominal"},
+          {"field": "Date", "type": "temporal"},
+          {"field": "Total", "type": "quantitative"}
+        ]
+      },
+      "title": "Streamgraph: Total Over Time by Item"
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/nehavinayak25/vizdata/main/HW_III.csv",
+        "format": {"type": "csv"}
+      },
+      "transform": [
+        {"calculate": "toNumber(trim(datum['Units']))", "as": "UnitsNum"}
+      ],
+      "layer": [
+        {
+          "mark": {"type": "bar", "color": "steelblue"},
+          "encoding": {
+            "x": {
+              "field": "UnitsNum",
+              "bin": {"maxbins": 10},
+              "type": "quantitative",
+              "title": "Units (binned), Mean of Units"
+            },
+            "y": {
+              "aggregate": "count",
+              "type": "quantitative",
+              "title": "Count of Records"
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "aggregate": [
+                {"op": "mean", "field": "UnitsNum", "as": "meanUnits"}
+              ]
+            }
+          ],
+          "mark": {"type": "rule", "color": "red", "strokeWidth": 2},
+          "encoding": {"x": {"field": "meanUnits", "type": "quantitative"}}
+        },
+        {
+          "transform": [
+            {
+              "aggregate": [
+                {"op": "mean", "field": "UnitsNum", "as": "meanUnits"}
+              ]
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 5,
+            "dy": -5,
+            "color": "red"
+          },
+          "encoding": {
+            "x": {"field": "meanUnits", "type": "quantitative"},
+            "y": {"value": 0},
+            "text": {"value": "Mean"}
+          }
+        }
+      ],
+      "title": "Histogram of Units with Global Mean",
+      "config": {
+        "background": "black",
+        "style": {
+          "guide-label": {"fill": "white"},
+          "guide-title": {"fill": "yellow"},
+          "title": {"color": "white"}
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/nehavinayak25/vizdata/main/HW_III.csv",
+        "format": {"type": "csv"}
+      },
+      "transform": [
+        {"calculate": "toNumber(trim(datum['Unit Cost']))", "as": "UnitCostNum"}
+      ],
+      "width": 300,
+      "mark": {"type": "bar", "width": 50},
+      "encoding": {
+        "x": {"field": "Item", "type": "nominal", "axis": {"labelAngle": 0}},
+        "y": {
+          "aggregate": "mean",
+          "field": "UnitCostNum",
+          "type": "quantitative"
+        },
+        "color": {"field": "Item", "type": "nominal"}
+      },
+      "title": "Average Unit Cost per Item"
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/nehavinayak25/vizdata/main/HW_III.csv",
+        "format": {"type": "csv"}
+      },
+      "transform": [
+        {"calculate": "toDate(datum['OrderDate'])", "as": "Date"},
+        {"calculate": "toNumber(trim(datum['Units']))", "as": "UnitsNum"},
+        {
+          "calculate": "toNumber(trim(datum['Unit Cost']))",
+          "as": "UnitCostNum"
+        },
+        {"calculate": "datum.UnitsNum * datum.UnitCostNum", "as": "Total"},
+        {"timeUnit": "yearmonth", "field": "Date", "as": "Month"},
+        {
+          "aggregate": [{"op": "sum", "field": "Total", "as": "MonthlyTotal"}],
+          "groupby": ["Month"]
+        },
+        {
+          "window": [
+            {"op": "mean", "field": "MonthlyTotal", "as": "RollingAvg"}
+          ],
+          "frame": [-2, 2],
+          "sort": [{"field": "Month"}]
+        }
+      ],
+      "layer": [
+        {
+          "mark": "line",
+          "encoding": {
+            "x": {"field": "Month", "type": "temporal", "title": "Month"},
+            "y": {
+              "field": "MonthlyTotal",
+              "type": "quantitative",
+              "title": "Total Sales"
+            },
+            "tooltip": [
+              {"field": "Month", "type": "temporal"},
+              {
+                "field": "MonthlyTotal",
+                "type": "quantitative",
+                "title": "Total Sales"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {"type": "line", "strokeDash": [4, 4], "color": "red"},
+          "encoding": {
+            "x": {"field": "Month", "type": "temporal"},
+            "y": {"field": "RollingAvg", "type": "quantitative"},
+            "tooltip": [
+              {"field": "Month", "type": "temporal"},
+              {
+                "field": "RollingAvg",
+                "type": "quantitative",
+                "title": "Rolling Avg"
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Total Sales by Month with Rolling Average"
+    }
+  ],
+  "config": {}
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
