@@ -7,17 +7,58 @@
         {
           "name": "Procedural",
           "children": [
-            {"name": "C", "children": []},
-            {"name": "Fortran", "children": []},
-            {"name": "Pascal", "children": []}
+            {
+              "name": "C",
+              "children": [
+                {
+                  "name": "System Programming",
+                  "children": [
+                    { "name": "Linux Kernel", "children": [] },
+                    { "name": "Embedded Systems", "children": [] }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Fortran",
+              "children": [
+                {
+                  "name": "Scientific Computing",
+                  "children": [
+                    { "name": "Numerical Weather Prediction", "children": [] }
+                  ]
+                }
+              ]
+            },
+            { "name": "Pascal", "children": [] }
           ]
         },
         {
           "name": "Object-Oriented",
           "children": [
-            {"name": "C++", "children": []},
-            {"name": "Java", "children": []},
-            {"name": "Python", "children": []}
+            {
+              "name": "C++",
+              "children": [
+                {
+                  "name": "Game Development",
+                  "children": [
+                    { "name": "Unreal Engine", "children": [] }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Java",
+              "children": [
+                {
+                  "name": "Enterprise",
+                  "children": [
+                    { "name": "Spring Framework", "children": [] }
+                  ]
+                }
+              ]
+            },
+            { "name": "Python", "children": [] }
           ]
         }
       ]
@@ -28,15 +69,35 @@
         {
           "name": "Pure Functional",
           "children": [
-            {"name": "Haskell", "children": []},
-            {"name": "Erlang", "children": []}
+            {
+              "name": "Haskell",
+              "children": [
+                {
+                  "name": "Academic Use",
+                  "children": [
+                    { "name": "Functional Programming Courses", "children": [] }
+                  ]
+                }
+              ]
+            },
+            { "name": "Erlang", "children": [] }
           ]
         },
         {
           "name": "Multi-paradigm",
           "children": [
-            {"name": "Scala", "children": []},
-            {"name": "F#", "children": []}
+            {
+              "name": "Scala",
+              "children": [
+                {
+                  "name": "Big Data",
+                  "children": [
+                    { "name": "Apache Spark", "children": [] }
+                  ]
+                }
+              ]
+            },
+            { "name": "F#", "children": [] }
           ]
         }
       ]
