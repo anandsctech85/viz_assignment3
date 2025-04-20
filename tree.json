@@ -8,14 +8,24 @@
           "name": "Procedural",
           "children": [
             {"name": "C"},
-            {"name": "Fortran"}
+            {"name": "Fortran"},
+            {"name": "Pascal"}
           ]
         },
         {
           "name": "Object-Oriented",
           "children": [
             {"name": "C++"},
-            {"name": "Java"}
+            {"name": "Java"},
+            {"name": "Python"},
+            {"name": "Ruby"}
+          ]
+        },
+        {
+          "name": "Parallel",
+          "children": [
+            {"name": "OpenMP"},
+            {"name": "MPI"}
           ]
         }
       ]
@@ -26,7 +36,15 @@
         {
           "name": "Pure Functional",
           "children": [
-            {"name": "Haskell"}
+            {"name": "Haskell"},
+            {"name": "Erlang"}
+          ]
+        },
+        {
+          "name": "Multi-paradigm",
+          "children": [
+            {"name": "Scala"},
+            {"name": "F#"}
           ]
         }
       ]
@@ -34,9 +52,16 @@
     {
       "name": "Logic",
       "children": [
-        {"name": "Prolog"}
+        {"name": "Prolog"},
+        {"name": "Mercury"}
+      ]
+    },
+    {
+      "name": "Declarative",
+      "children": [
+        {"name": "SQL"},
+        {"name": "XQuery"}
       ]
     }
   ]
 }
-
