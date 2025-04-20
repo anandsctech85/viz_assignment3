@@ -7,25 +7,25 @@
         {
           "name": "Procedural",
           "children": [
-            {"name": "C"},
-            {"name": "Fortran"},
-            {"name": "Pascal"}
+            {"name": "C", "children": []},
+            {"name": "Fortran", "children": []},
+            {"name": "Pascal", "children": []}
           ]
         },
         {
           "name": "Object-Oriented",
           "children": [
-            {"name": "C++"},
-            {"name": "Java"},
-            {"name": "Python"},
-            {"name": "Ruby"}
+            {"name": "C++", "children": []},
+            {"name": "Java", "children": []},
+            {"name": "Python", "children": []},
+            {"name": "Ruby", "children": []}
           ]
         },
         {
           "name": "Parallel",
           "children": [
-            {"name": "OpenMP"},
-            {"name": "MPI"}
+            {"name": "OpenMP", "children": []},
+            {"name": "MPI", "children": []}
           ]
         }
       ]
@@ -36,15 +36,15 @@
         {
           "name": "Pure Functional",
           "children": [
-            {"name": "Haskell"},
-            {"name": "Erlang"}
+            {"name": "Haskell", "children": []},
+            {"name": "Erlang", "children": []}
           ]
         },
         {
           "name": "Multi-paradigm",
           "children": [
-            {"name": "Scala"},
-            {"name": "F#"}
+            {"name": "Scala", "children": []},
+            {"name": "F#", "children": []}
           ]
         }
       ]
@@ -52,15 +52,15 @@
     {
       "name": "Logic",
       "children": [
-        {"name": "Prolog"},
-        {"name": "Mercury"}
+        {"name": "Prolog", "children": []},
+        {"name": "Mercury", "children": []}
       ]
     },
     {
       "name": "Declarative",
       "children": [
-        {"name": "SQL"},
-        {"name": "XQuery"}
+        {"name": "SQL", "children": []},
+        {"name": "XQuery", "children": []}
       ]
     }
   ]
