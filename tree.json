@@ -1,30 +1,63 @@
 {
-  "name": "Root",
+  "name": "Programming Languages",
   "children": [
     {
-      "name": "Branch A",
+      "name": "Imperative",
       "children": [
         {
-          "name": "Leaf A1"
+          "name": "Procedural",
+          "children": [
+            {"name": "C"},
+            {"name": "Fortran"},
+            {"name": "Pascal"}
+          ]
         },
         {
-          "name": "Leaf A2"
+          "name": "Object-Oriented",
+          "children": [
+            {"name": "C++"},
+            {"name": "Java"},
+            {"name": "Python"}
+          ]
+        },
+        {
+          "name": "Parallel",
+          "children": [
+            {"name": "OpenMP"}
+          ]
         }
       ]
     },
     {
-      "name": "Branch B",
+      "name": "Functional",
       "children": [
         {
-          "name": "SubBranch B1",
+          "name": "Pure Functional",
           "children": [
-            { "name": "Leaf B1a" },
-            { "name": "Leaf B1b" }
+            {"name": "Haskell"},
+            {"name": "Erlang"}
           ]
         },
         {
-          "name": "Leaf B2"
+          "name": "Multi-paradigm",
+          "children": [
+            {"name": "Scala"},
+            {"name": "F#"}
+          ]
         }
+      ]
+    },
+    {
+      "name": "Logic",
+      "children": [
+        {"name": "Prolog"}
+      ]
+    },
+    {
+      "name": "Declarative",
+      "children": [
+        {"name": "SQL"},
+        {"name": "XQuery"}
       ]
     }
   ]
