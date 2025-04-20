@@ -14,7 +14,7 @@
                   "name": "System Programming",
                   "children": [
                     { "name": "Linux Kernel", "children": [] },
-                    { "name": "Embedded Systems", "children": [] }
+                    { "name": "Embedded Sys", "children": [] }
                   ]
                 }
               ]
@@ -25,7 +25,7 @@
                 {
                   "name": "Scientific Computing",
                   "children": [
-                    { "name": "Numerical Weather Prediction", "children": [] }
+                    { "name": "Weather Prediction", "children": [] }
                   ]
                 }
               ]
@@ -57,8 +57,7 @@
                   ]
                 }
               ]
-            },
-            { "name": "Python", "children": [] }
+            }
           ]
         }
       ]
