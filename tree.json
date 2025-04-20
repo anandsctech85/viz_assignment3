@@ -19,13 +19,6 @@
             {"name": "Java", "children": []},
             {"name": "Python", "children": []}
           ]
-        },
-        {
-          "name": "Parallel",
-          "children": [
-            {"name": "OpenMP", "children": []},
-            {"name": "MPI", "children": []}
-          ]
         }
       ]
     },
