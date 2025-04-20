@@ -71,14 +71,7 @@
           "children": [
             {
               "name": "Haskell",
-              "children": [
-                {
-                  "name": "Academic Use",
-                  "children": [
-                    { "name": "Functional Programming Courses", "children": [] }
-                  ]
-                }
-              ]
+              "children": []
             },
             { "name": "Erlang", "children": [] }
           ]
