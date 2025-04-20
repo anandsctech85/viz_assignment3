@@ -17,8 +17,7 @@
           "children": [
             {"name": "C++", "children": []},
             {"name": "Java", "children": []},
-            {"name": "Python", "children": []},
-            {"name": "Ruby", "children": []}
+            {"name": "Python", "children": []}
           ]
         },
         {
@@ -47,20 +46,6 @@
             {"name": "F#", "children": []}
           ]
         }
-      ]
-    },
-    {
-      "name": "Logic",
-      "children": [
-        {"name": "Prolog", "children": []},
-        {"name": "Mercury", "children": []}
-      ]
-    },
-    {
-      "name": "Declarative",
-      "children": [
-        {"name": "SQL", "children": []},
-        {"name": "XQuery", "children": []}
       ]
     }
   ]
