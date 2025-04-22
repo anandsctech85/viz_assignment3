@@ -99,7 +99,7 @@
     addColor(plot2, "Item");
 */
 
-    const plot2 = {
+  const plot2 = {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   width: 300,
   height: 300,
@@ -111,7 +111,7 @@
   selection: {
     brush: {
       type: "interval",
-      encodings: ["x", "y"] // rectangular selection on x and y
+      encodings: ["x", "y"] // enables rectangular brushing
     }
   },
   mark: "circle",
@@ -119,14 +119,12 @@
     x: { field: "UnitsNum", type: "quantitative", title: "Units" },
     y: { field: "UnitCostNum", type: "quantitative", title: "Unit Cost" },
     color: {
-      field: "Item",
-      type: "nominal",
       condition: {
-        selection: "brush", // highlight when selected
+        selection: "brush", // use this color only if selected
         field: "Item",
         type: "nominal"
       },
-      value: "lightgray" // default color for unselected points
+      value: "red" // unselected points are red
     },
     tooltip: [
       { field: "Item", type: "nominal" },
