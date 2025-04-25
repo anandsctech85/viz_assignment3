@@ -1,5 +1,5 @@
 {
-  "name": "Programming Languages",
+  "name": "Programming Lang.",
   "children": [
     {
       "name": "Imperative",
@@ -11,9 +11,9 @@
               "name": "C",
               "children": [
                 {
-                  "name": "System Programming",
+                  "name": "System Prog.",
                   "children": [
-                    { "name": "Linux Kernel", "children": [] },
+                    { "name": "Linux Krnl", "children": [] },
                     { "name": "Embedded Sys", "children": [] }
                   ]
                 }
@@ -23,9 +23,9 @@
               "name": "Fortran",
               "children": [
                 {
-                  "name": "Scientific Computing",
+                  "name": "Scientific Comp.",
                   "children": [
-                    { "name": "Weather Prediction", "children": [] }
+                    { "name": "Weather Pred.", "children": [] }
                   ]
                 }
               ]
@@ -40,7 +40,7 @@
               "name": "C++",
               "children": [
                 {
-                  "name": "Game Development",
+                  "name": "Game Dev.",
                   "children": [
                     { "name": "Unreal Engine", "children": [] }
                   ]
